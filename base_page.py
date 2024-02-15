@@ -1,4 +1,5 @@
 # file: base_page.py
+import allure
 
 from locators import *
 from config import *
@@ -40,5 +41,9 @@ class BasePage:
     def is_element_present(self, locator):
         assert self.device.xpath(locator).exists, 'Element not found!'
 
+    def get_screen(self):
+        screen = "screen.png"
+        self.device.screenshot(screen)
+        allure.attach.file(f'./{screen}', attachment_type=allure.attachment_type.PNG)
 
 
