@@ -1,6 +1,5 @@
 # file: base_page.py
 import allure
-
 from locators import *
 from config import *
 import random

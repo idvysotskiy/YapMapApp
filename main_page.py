@@ -1,10 +1,9 @@
-import allure
-
 from base_page import BasePage
 from locators import *
 from config import *
 from uiautomator2 import UiObject
 from uiautomator2 import Direction
+import allure
 
 
 class MainPage(BasePage):
@@ -30,13 +29,17 @@ class MainPage(BasePage):
 
     @allure.step('Авторизоваться в приложении')
     def login(self, email, password):
-        self.device.xpath(Main.SIGNIN).click()
-        self.device.xpath(Authorization.EMAIL).click()
-        self.device.send_keys(email)
-        self.device.xpath(Authorization.PASSWORD).click()
-        self.device.send_keys(password)
-        BasePage.get_screen(self)
-        self.device.xpath(Authorization.SIGNIN).click()
+        with allure.step('Нажать кнопку "Sig in" на главном экране'):
+            self.device.xpath(Main.SIGNIN).click()
+        with allure.step('Ввести email'):
+            self.device.xpath(Authorization.EMAIL).click()
+            self.device.send_keys(email)
+        with allure.step('Ввести password'):
+            self.device.xpath(Authorization.PASSWORD).click()
+            self.device.send_keys(password)
+            BasePage.get_screen(self)
+        with allure.step('Нажать кнопку Sig in на экране авторизации'):
+            self.device.xpath(Authorization.SIGNIN).click()
 
     @allure.step('Нажать кнопку "SIGN UP" на главном экране')
     def signup(self):

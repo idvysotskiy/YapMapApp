@@ -58,6 +58,10 @@ class TestMobile:
         BasePage.get_screen(device)
         assert device.xpath(Registration.ERROR).get_text() == 'Email must be more than 3 characters'
 
+    @pytest.mark.smoke
+    @allure.title("Регистрация в приложении [Sign UP]")
+    @allure.testcase("Проверка регистрации в приложении (1/3 steps)")
+    @allure.step('Ввести не валидные данные в поле password')
     def test_signup_invalid_password(self, device):
         page = MainPage(device)
         page.skip()
@@ -76,6 +80,16 @@ class TestMobile:
         page.signup()
         BasePage.get_screen(device)
         assert device.xpath(Registration.ERROR).get_text() == 'Passwords do not match'
+
+    @pytest.mark.smoke
+    @allure.title("Регистрация в приложении [Sign UP]")
+    @allure.testcase("Проверка регистрации в приложении (1/3 steps)")
+    @allure.step('Ввести валидные данные в поле password')
+    def test_signup_valid_password(self, device):
+        page = MainPage(device)
+        page.skip()
+        page.signup()
+        page.enter_email(BasePage.generate_random_email(device))
         page.confirm_password(valid_password)
         page.click_show_confirm_pass()
         BasePage.get_screen(device)
