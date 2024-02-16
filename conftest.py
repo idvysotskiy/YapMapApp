@@ -1,15 +1,14 @@
 import pytest
 import uiautomator2 as u2
 from config import *
+import allure
+
 
 @allure.title("Запускаем приложение")
 @pytest.fixture
-def device():
+def d():
     device_id = 'emulator-5554'
-    d = u2.connect(device_id)
-    d.app_start(package,stop=True)
-    d.implicitly_wait(10.0)
+    device = u2.connect(device_id)
+    device.app_start(package, stop=True)
+    device.implicitly_wait(10.0)
     return d
-
-
-
