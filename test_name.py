@@ -119,7 +119,7 @@ class TestMobile:
         BasePage.get_screen(d)
         assert d.xpath(Registration.CONFIRM_PASSWORD).get_text() == valid_password
         page.signup()
-        # assert device.xpath(Registration.POPUP).get_text() == 'You must agree with terms'
+        # assert device.xpath(Registration.POPUP).get_text() == 'You must agree with terms_'
         page.click_terms_switch()
         page.signup()
         time.sleep(5)
