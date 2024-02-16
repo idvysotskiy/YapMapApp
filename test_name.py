@@ -1,12 +1,11 @@
 # file: test_name.py
 import time
-
-import allure
 import pytest
-
 from main_page import MainPage
 from config import *
 from base_page import *
+import allure
+
 
 @allure.title("Чистим кеш приложения после теста")
 @pytest.fixture(autouse=True)
@@ -88,11 +87,11 @@ class TestMobile:
         time.sleep(5)
         BasePage.get_screen(device)
         assert device.xpath(Validation.TITLE).get_text() == 'Enter Validation Code'
-        assert device.xpath(Validation.DESCRIPTION).get_text() == 'You should be a receiving an email with a validation code'
-
-
+        assert device.xpath(
+            Validation.DESCRIPTION).get_text() == 'You should be a receiving an email with a validation code'
 
         # page.enter_signup_data(valid_email, valid_password)
+
     @pytest.mark.smoke
     @allure.title("Авторизация [Sign IN]")
     @allure.testcase("Проверка авторизации в приложении")
@@ -100,5 +99,3 @@ class TestMobile:
         page = MainPage(device)
         page.skip()
         page.login(valid_email, valid_password)
-
-
