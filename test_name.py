@@ -22,13 +22,29 @@ class TestMobile:
         page = MainPage(d)
         time.sleep(5)
         assert d.xpath(Tutorial.SKIP).get_text() == 'SKIP'
-        # assert device.xpath(//*[contains( @ text, 'Se')])
+        # assert d.xpath(Tutorial.TEXT_1).get_text() == 'Are you lonely? ENTER?????'
         page.swipe('left')
+        assert d.xpath(Tutorial.SKIP).get_text() == 'SKIP'
+        assert d.xpath(Tutorial.TEXT_2).get_text() == 'You can create a group of interest. Invite friends. And to be always in the stream of life.'
         page.swipe('left')
+        assert d.xpath(Tutorial.SKIP).get_text() == 'SKIP'
+        assert d.xpath(Tutorial.TEXT_3).get_text() == 'Create an event and invite people to spend time together.'
         page.swipe('left')
+        assert d.xpath(Tutorial.SKIP).get_text() == 'SKIP'
+        assert d.xpath(Tutorial.TEXT_4).get_text() == 'Communicate. Enjoy life. Share your impressions.'
         page.swipe('left')
+        time.sleep(3)
+        assert d.xpath(Tutorial.TEXT_5).get_text() == 'And besides, your application will help you find clients in case you are running a business.'
+        assert d.xpath(Tutorial.SKIP).get_text() == 'DONE'
         page.skip()
-        BasePage.get_screen(d)
+        # BasePage.get_screen(d)
+        # element = d.xpath(Main.SIGNUP)
+        # assert d.exists(element)
+        # element = d.xpath(Main.SIGNIN)
+        # assert d.exists(Main.SIGNIN)
+        # BasePage.is_element_present(d, MainPage.signup)
+
+        # BasePage.get_screen(d)
 
     @pytest.mark.smoke
     @allure.title("Регистрация в приложении [Sign UP]")
@@ -38,8 +54,15 @@ class TestMobile:
         page = MainPage(d)
         page.skip()
         page.signup()
+        assert d.xpath(Registration.CURRENT_STEP).get_text() == '1'
+        assert d.xpath(Registration.ALL_STEP).get_text() == '/4'
+        assert d.xpath(Registration.STEPS_TEXT).get_text() == 'STEPS'
         BasePage.get_screen(d)
         page.back()
+        assert d.xpath(Main.TITLE).get_text() == 'YapMapApp'
+        assert d.xpath(Main.DESCRIPTION).get_text() == 'New generation social ecosystem'
+        assert d.xpath(Main.SIGNUP).get_text() == 'SIGN UP'
+        assert d.xpath(Main.SIGNIN).get_text() == 'SIGN IN'
 
     @pytest.mark.smoke
     @allure.title("Регистрация в приложении [Sign UP]")
@@ -90,6 +113,7 @@ class TestMobile:
         page.skip()
         page.signup()
         page.enter_email(BasePage.generate_random_email(d))
+        page.enter_password(valid_password)
         page.confirm_password(valid_password)
         page.click_show_confirm_pass()
         BasePage.get_screen(d)

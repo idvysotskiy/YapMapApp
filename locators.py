@@ -4,7 +4,7 @@ class Tutorial:
     SKIP = '//*[@resource-id="com.yapmap.yapmap:id/activity_welcome_button"]'
     PAGE_CONTROLS = '//*[@resource-id="com.yapmap.yapmap:id/activity_welcome_piv"]'
     IMAGE_1 = '//*[@resource-id="com.yapmap.yapmap:id/activity_welcome_fragment_page_1_image"]'
-    TEXT_1 = '//*[@text="Are you lonely? Or maybe you want to find a partner for your hobbies? You can easily do this with the YapMap app."]'
+    TEXT_1 = '//*[contains(text(), "Are you lonely?"]'
     IMAGE_2 = '//*[@resource-id="com.yapmap.yapmap:id/activity_welcome_fragment_page_2_image"]'
     TEXT_2 = '//*[@text="You can create a group of interest. Invite friends. And to be always in the stream of life."]'
     IMAGE_3 = '//*[@resource-id="com.yapmap.yapmap:id/activity_welcome_fragment_page_3_image"]'

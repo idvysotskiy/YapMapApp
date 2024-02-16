@@ -20,8 +20,9 @@ class BasePage:
         assert self.d.xpath(locator).exists, 'Element not found!'
 
     def get_screen(self):
-        screen = "screen.png"
-        self.d.screenshot(screen)
-        allure.attach.file(f'./{screen}', attachment_type=allure.attachment_type.PNG)
+        print('screen')
+        # screen = "screen.png"
+        # self.d.screenshot(screen)
+        # allure.attach.file(f'./{screen}', attachment_type=allure.attachment_type.PNG)
 
 

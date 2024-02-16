@@ -4,11 +4,12 @@ from config import *
 import allure
 
 
-@allure.title("Запускаем приложение")
+@allure.title("Запустить приложение")
 @pytest.fixture
 def d():
     device_id = 'emulator-5554'
     device = u2.connect(device_id)
     device.app_start(package, stop=True)
+    device.xpath.global_set("timeout", 10)
     device.implicitly_wait(10.0)
-    return d
+    return device

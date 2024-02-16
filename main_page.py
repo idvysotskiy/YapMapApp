@@ -10,6 +10,7 @@ class MainPage(BasePage):
     def __init__(self, d):
         super().__init__(d)
 
+    @allure.step('Нажать кнопку "Done/Skip"')
     def skip(self):
         # Ожидание элемента в течение 10 секунд
         element = self.d.xpath(Tutorial.SKIP).wait(timeout=10)
@@ -31,10 +32,10 @@ class MainPage(BasePage):
     def login(self, email, password):
         with allure.step('Нажать кнопку "Sig in" на главном экране'):
             self.d.xpath(Main.SIGNIN).click()
-        with allure.step('Ввести email'):
+        with allure.step(f'Ввести в поле email: {email}'):
             self.d.xpath(Authorization.EMAIL).click()
             self.d.send_keys(email)
-        with allure.step('Ввести password'):
+        with allure.step(f'Ввести в поле password: {password}'):
             self.d.xpath(Authorization.PASSWORD).click()
             self.d.send_keys(password)
             BasePage.get_screen(self)
@@ -68,7 +69,7 @@ class MainPage(BasePage):
         # self.device.xpath(Registration.INVITE_CODE).click()
         # self.device.send_keys(invite)
 
-    @allure.step('Нажать свитч согласия с пользовательским соглашением')
+    @allure.step('Нажать свитч "Согласиться с правилами"')
     def click_terms_switch(self):
         self.d.xpath(Registration.TETMS_SWITCH).click()
 
@@ -80,16 +81,16 @@ class MainPage(BasePage):
     def click_show_confirm_pass(self):
         self.d.xpath(Registration.SHOW_CONFIRM_PASSWORD).click()
 
-    @allure.step('Нажать кнопку "SIGN UP" на экране регистрации')
+    @allure.step('Нажать кнопку [SIGN UP] на экране регистрации')
     def sign_up(self):
         self.d.xpath(Registration.SIGN_UP).click()
 
-    @allure.step('Очистить поле email')
+    @allure.step('Удалить текст из поля [Email]')
     def clear_email(self):
         self.d.xpath(Registration.EMAIL).click()
         self.d.clear_text()
 
-    @allure.step('Очистить поле password')
+    @allure.step('Удалить текст из поля [password]')
     def clear_password(self):
         self.d.xpath(Registration.PASSWORD).click()
         self.d.clear_text()
