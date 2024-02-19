@@ -28,6 +28,7 @@ class Main:
 
 class Registration:
     # NEW ACCOUNT SCREEN
+    # STEP 1/4
     EMAIL = '//*[@resource-id="com.yapmap.yapmap:id/email_edit_text"]'
     ERROR = '//*[@resource-id="com.yapmap.yapmap:id/textinput_error"]'
     INVITE_CODE = '//*[@resource-id="com.yapmap.yapmap:id/invite_code_edit_text"]'
@@ -44,6 +45,29 @@ class Registration:
     ALL_STEP = '//*[@resource-id="com.yapmap.yapmap:id/all_text_view"]'
     STEPS_TEXT = '//*[@resource-id="com.yapmap.yapmap:id/text_view"]'
     POPUP = "//*[text() = 'You must agree with terms']"
+
+    # STEP 2/4
+    UPLOAD_PICTURE_TEXT = '//*[@resource-id="com.yapmap.yapmap:id/profile_title_text_view"]'
+    UPLOAD_PICTURE = '//*[@resource-id="com.yapmap.yapmap:id/profile_photo_layout"]/android.widget.FrameLayout[1]'
+    FIRST_NAME = '//*[@resource-id="com.yapmap.yapmap:id/first_name_edit_text"]'
+    LAST_NAME = '//*[@resource-id="com.yapmap.yapmap:id/last_name_edit_text"]'
+    DOB_TITLE = '//*[@resource-id="com.yapmap.yapmap:id/dob_title"]'
+    DOB_TEXT = '//*[@resource-id="com.yapmap.yapmap:id/dob_text_view"]'
+    DOB_SELECT = '//*[@resource-id="com.yapmap.yapmap:id/dob_layout"]'
+    GENDER_TITLE = '//*[@resource-id="com.yapmap.yapmap:id/gender_title_text_view"]'
+    MALE = '//*[@resource-id="com.yapmap.yapmap:id/male_text_view"]'
+    FEMALE = '//*[@resource-id="com.yapmap.yapmap:id/female_text_view"]'
+    CONTINUE = '//*[@resource-id="com.yapmap.yapmap:id/continue_button"]'
+    PERMISSION_TITLE = '//*[@resource-id="com.android.permissioncontroller:id/permission_message"]'
+    PERMISSION_ALLOW = '//*[@resource-id="com.android.permissioncontroller:id/permission_allow_button"]'
+    PERMISSION_DONT_ALLOW = '//*[@resource-id="com.android.permissioncontroller:id/permission_deny_button"]'
+    TAKE_PICTURE_ALLOW = '//*[@resource-id="com.android.permissioncontroller:id/permission_allow_foreground_only_button"]'
+    PHOTO = '//*[@resource-id="com.android.camera2:id/bottom_bar"]'
+    ACCEPT_PHOTO = '//*[@resource-id="com.android.camera2:id/done_button"]'
+    # CALENDAR
+    YEAR = '//*[@resource-id="android:id/date_picker_header_year"]'
+    PICK_YEAR = '//*[@text="2002"]'
+    PICK_DAY = '//*[@text="19"]'
 
 
 class Validation:

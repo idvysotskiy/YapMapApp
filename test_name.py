@@ -134,17 +134,21 @@ class TestMobile:
         # assert device.xpath(Registration.POPUP).get_text() == 'You must agree with terms_'
         page.click_terms_switch()
         page.signup()
-        time.sleep(5)
+        time.sleep(2)
         BasePage.get_screen(d)
         assert d.xpath(Validation.TITLE).get_text() == 'Enter Validation Code'
-
-        time.sleep(2)
+        assert d.xpath(Validation.DESCRIPTION).get_text() == 'You should be a receiving an email with a validation code'
         page.input_code()
-        assert d.xpath(Validation.DESCRIPTION) == 'Invalid validation code'
         time.sleep(2)
+        assert d.xpath(Validation.DESCRIPTION).get_text() == 'Invalid validation code'
+        page.click_resend()
+
         # assert d.xpath(Registration.CURRENT_STEP).get_text() == '2'
         # assert d.xpath(Registration.ALL_STEP).get_text() == '/4'
         # assert d.xpath(Registration.STEPS_TEXT).get_text() == 'STEPS'
+        # assert d.xpath(Registration.UPLOAD_PICTURE_TEXT) == 'Upload a profile picture'
+        # page.upload_profile_picture()
+        # page.choose_dob()
 
     @pytest.mark.smoke
     @allure.title("Авторизация [Sign IN]")

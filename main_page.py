@@ -4,9 +4,6 @@ from config import *
 from uiautomator2 import UiObject
 from uiautomator2 import Direction
 import allure
-from imapclient import IMAPClient
-import re
-import pyperclip
 
 
 class MainPage(BasePage):
@@ -143,6 +140,7 @@ class MainPage(BasePage):
     #     print(code)
     #     self.d.xpath(Validation.CODE_1).click()
     #     self.d.send_keys(code)
+    @allure.step('Ввести проверочный код')
     def input_code(self):
         self.d.xpath(Validation.CODE_1).click()
         self.d.send_keys('1')
@@ -152,3 +150,28 @@ class MainPage(BasePage):
         self.d.send_keys('3')
         self.d.xpath(Validation.CODE_4).click()
         self.d.send_keys('4')
+        BasePage.get_screen(self)
+
+    @allure.step('Нажать кнопку "RESEND"')
+    def click_resend(self):
+        self.d.xpath(Validation.RESEND).click()
+
+    @allure.step('Выбрать фото профиля')
+    def upload_profile_picture(self):
+        self.d.xpath(Registration.UPLOAD_PICTURE).click()
+        self.d.xpath(Registration.PERMISSION_ALLOW).click()
+        self.d.xpath(Registration.TAKE_PICTURE_ALLOW).click()
+        self.d.xpath(Registration.PHOTO).click()
+        self.d.xpath(Registration.ACCEPT_PHOTO).click()
+
+    @allure.step('Выбрать дату рождения')
+    def choose_dob(self):
+        self.d.xpath(Registration.YEAR).click()
+        self.d.xpath(Registration.PICK_YEAR).click()
+        self.d.xpath(Registration.PICK_DAY).click()
+
+
+
+
+
+
