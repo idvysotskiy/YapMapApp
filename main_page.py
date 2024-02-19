@@ -169,6 +169,29 @@ class MainPage(BasePage):
         self.d.xpath(Registration.YEAR).click()
         self.d.xpath(Registration.PICK_YEAR).click()
         self.d.xpath(Registration.PICK_DAY).click()
+        self.d.xpath(Registration.CALENDAR_OK).click()
+
+    @allure.step('Выбрать гендер')
+    def choose_gender(self, gender):
+        if gender == 'male':
+            self.d.xpath(Registration.MALE).click()
+        if gender == 'female':
+            self.d.xpath(Registration.FEMALE).click()
+
+    @allure.step('Нажать кнопку продолжить')
+    def click_continue(self):
+        self.d.xpath(Registration.CONTINUE).click()
+
+    @allure.step('Заполнить поле First Name')
+    def enter_first_name(self, first_name):
+        self.d.xpath(Registration.FIRST_NAME).click()
+        self.d.send_keys(first_name)
+
+    @allure.step('Заполнить поле Last Name')
+    def enter_last_name(self, last_name):
+        self.d.xpath(Registration.LAST_NAME).click()
+        self.d.send_keys(last_name)
+
 
 
 

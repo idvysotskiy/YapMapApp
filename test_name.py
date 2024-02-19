@@ -150,6 +150,19 @@ class TestMobile:
         # page.upload_profile_picture()
         # page.choose_dob()
 
+        page.click_continue()
+        assert d.xpath(Registration.FIRST_NAME_ERROR) == 'First Name is required'
+        page.enter_first_name('SV')
+        page.click_continue()
+        assert d.xpath(Registration.FIRST_NAME_ERROR) == 'First Name must be more than 3 characters'
+        page.enter_first_name('Sergey')
+        page.click_continue()
+        assert d.xpath(Registration.LAST_NAME_ERROR) == 'Last Name is required'
+        page.enter_last_name('SV')
+        page.click_continue()
+        assert d.xpath(Registration.LAST_NAME_ERROR) == 'Last Name must be more than 3 characters'
+        page.choose_gender('male')
+
     @pytest.mark.smoke
     @allure.title("Авторизация [Sign IN]")
     @allure.testcase("Проверка авторизации в приложении")

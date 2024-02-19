@@ -51,6 +51,8 @@ class Registration:
     UPLOAD_PICTURE = '//*[@resource-id="com.yapmap.yapmap:id/profile_photo_layout"]/android.widget.FrameLayout[1]'
     FIRST_NAME = '//*[@resource-id="com.yapmap.yapmap:id/first_name_edit_text"]'
     LAST_NAME = '//*[@resource-id="com.yapmap.yapmap:id/last_name_edit_text"]'
+    FIRST_NAME_ERROR = '//*[@resource-id="com.yapmap.yapmap:id/textinput_error"]'
+    LAST_NAME_ERROR = '//*[@resource-id="com.yapmap.yapmap:id/textinput_error"]'
     DOB_TITLE = '//*[@resource-id="com.yapmap.yapmap:id/dob_title"]'
     DOB_TEXT = '//*[@resource-id="com.yapmap.yapmap:id/dob_text_view"]'
     DOB_SELECT = '//*[@resource-id="com.yapmap.yapmap:id/dob_layout"]'
@@ -68,6 +70,47 @@ class Registration:
     YEAR = '//*[@resource-id="android:id/date_picker_header_year"]'
     PICK_YEAR = '//*[@text="2002"]'
     PICK_DAY = '//*[@text="19"]'
+    CALENDAR_OK = '//*[@resource-id="android:id/button1"]'
+
+    # STEP 3/4
+    TITLE_STEP_3 = '//*[@resource-id="com.yapmap.yapmap:id/personal_info_text_view"]'
+    DESCRIPTION_STEP_3 = '//*[@text="Used for filters for Dating feature. You can add it late to your Personal Profile"]'
+    PRIVATE_PROFILE_TEXT = '//*[@text="Private profile"]'
+    PRIVATE_SWITCH = '//*[@resource-id="com.yapmap.yapmap:id/switch_compat"]'
+    DESCRIPTION_TEXT = '//*[@resource-id="com.yapmap.yapmap:id/description_text_view"]'
+    STATUS_TEXT = '//*[@text="Status"]'
+    STATUS_SELECT = '//*[@resource-id="com.yapmap.yapmap:id/status_field"]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]'
+    STATUS_SELECTION_TEXT = '//*[@resource-id="com.yapmap.yapmap:id/status_field"]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.TextView[1]'
+    ORIENTATION_TEXT = '//*[@text="Sexual orientation"]'
+    ORIENTATION_SELECT = '//*[@resource-id="com.yapmap.yapmap:id/sexual_orientation_field"]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]'
+    ORIENTATION_SELECTION_TEXT = '//*[@resource-id="com.yapmap.yapmap:id/sexual_orientation_field"]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.TextView[1]'
+    RELIGION_TEXT = '//*[@text="Religion"]'
+    RELIGION_SELECT = '//*[@resource-id="com.yapmap.yapmap:id/religion_field"]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]'
+    RELIGION_SELECTION_TEXT = '//*[@resource-id="com.yapmap.yapmap:id/religion_field"]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.TextView[1]'
+    ETHNOS_TEXT = '//*[@text="Ethnos"]'
+    ETHNOS_SELECT = '//*[@resource-id="com.yapmap.yapmap:id/ethnos_field"]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]'
+    ETHNOS_SELECTION_TEXT = '//*[@resource-id="com.yapmap.yapmap:id/ethnos_field"]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.TextView[1]'
+    HEIGHT_TEXT = '//*[@text="Height"]'
+    HEIGHT_ENTER = '//*[@resource-id="com.yapmap.yapmap:id/height_field"]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]'
+    HEIGHT_SELECT = '//*[@resource-id="com.yapmap.yapmap:id/height_field"]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]'
+    WEIGHT_TEXT = '//*[@text="Weight"]'
+    WEIGHT_ENTER = '//*[@resource-id="com.yapmap.yapmap:id/weight_field"]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]'
+    WEIGHT_SELECT = '//*[@resource-id="com.yapmap.yapmap:id/weight_field"]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]'
+    # STATUS
+
+
+class Status:
+    TITLE = '//*[@text="Status"]'
+    SINGLE_TEXT = '//*[@text="Single"]'
+    SINGLE_SELECT = '//androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[1]'
+    MARRIED_TEXT = '//*[@text="Married"]'
+    MARRIED_SELECT = '//androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[2]'
+    DIVORCED_TEXT = '//*[@text="Divorced"]'
+    DIVORCED_SELECT = '//androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[3]'
+    WIDOWED_TEXT = '//*[@text="Widowed"]'
+    WIDOWED_SELECT = '//androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[4]'
+    COMPLICATED_TEXT = '//*[@text="Complicated"]'
+    COMPLICATED_SELECT = '//androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[5]'
 
 
 class Validation:
