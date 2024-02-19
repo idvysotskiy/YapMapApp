@@ -96,6 +96,7 @@ class Registration:
     WEIGHT_TEXT = '//*[@text="Weight"]'
     WEIGHT_ENTER = '//*[@resource-id="com.yapmap.yapmap:id/weight_field"]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]'
     WEIGHT_SELECT = '//*[@resource-id="com.yapmap.yapmap:id/weight_field"]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]'
+    C
     # STATUS
 
 
@@ -111,6 +112,61 @@ class Status:
     WIDOWED_SELECT = '//androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[4]'
     COMPLICATED_TEXT = '//*[@text="Complicated"]'
     COMPLICATED_SELECT = '//androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[5]'
+
+
+class Orientation:
+    HETERO_TEXT = '//*[@text="Hetero"]'
+    HETERO_SELECT = '//androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[1]'
+    HOMO_TEXT = '//*[@text="Homo"]'
+    HOMO_SELECT = '//androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[2]'
+    BI_TEXT = '//*[@text="Bi"]'
+    BI_SELECT = '//androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[3]'
+
+
+class Religion:
+    TITLE = '//*[@text="Religion"]'
+    CHRISTIANITY = '//androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[1]'
+    ISLAM = '//androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[2]'
+    ATHEIST = '//androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[3]'
+    HINDUISM = '//androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[4]'
+    BUDDHISM = '//androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[5]'
+    CHINESE_TRADITIONAL_RELIGION = '//androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[6]'
+    ETHNIC_RELIGION = '//androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[7]'
+    AFRICAN_TRADITIONAL_RELIGIONS = '//androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[8]'
+    SIKHISM = '//androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[9]'
+    SPIRITISM = '//androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[10]'
+    JUDAISM = '//androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[11]'
+    BAHAI = '//androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[12]'
+    JAINISM = '//androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[13]'
+    SHINTO = '//androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[14]'
+    CAO_DAI = '//androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[15]'
+    ZOROASTRIANISM = '//androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[9]'
+    TENRIKYO = '//androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[10]'
+    NEO_PAGANISM = '//androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[11]'
+    UNITARIAN_UNIVERSALISM = '//androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[12]'
+    RASTAFARI = '//androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[13]'
+    ESOTERIC = '//androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[14]'
+    OTHER = '//androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[15]'
+
+
+class Ethnos:
+    TITLE = '//*[@text="Ethnos"]'
+    EUROPEAN = '//androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[1]'
+    BLACK = '//androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[2]'
+    ASIAN = '//androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[3]'
+    AMERICAN_RED_RACE = '//androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[4]'
+    CAUCASIAN_RACE_WHITE_RACE = '//androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[5]'
+    MALAYAN_BROWN_RACE = '//androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[6]'
+    ETHIOPID_BLACK_RACE = '//androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[7]'
+    MONGOLIAN_YELLOW_RACE = '//androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[8]'
+
+
+class HeightAndWeight:
+    SWITCH_TEXT_1 = '//*[@resource-id="com.yapmap.yapmap:id/switch_text_1"]'
+    SWITCH_TEXT_2 = '//*[@resource-id="com.yapmap.yapmap:id/switch_text_2"]'
+    SWITCH = '//*[@resource-id="com.yapmap.yapmap:id/switch_compat"]'
+    DONE = '//*[@resource-id="com.yapmap.yapmap:id/done_button"]'
+    TEXT_EDIT = '//*[@resource-id="com.yapmap.yapmap:id/edit_text_view"]'
 
 
 class Validation:
