@@ -12,7 +12,10 @@ valid_email = 'idgwynbleidd@gmail.com'
 valid_phone = '9639447845'
 
 invalid_email = 'r2d2'
-invalid_password = 'Qwer'
+invalid_password = '12345678'
+
+valid_email_reg = 'vysockij.s@i20.team'
+app_key = 'icuixuhbuucirovz'
 
 
 

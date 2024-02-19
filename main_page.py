@@ -4,6 +4,9 @@ from config import *
 from uiautomator2 import UiObject
 from uiautomator2 import Direction
 import allure
+from imapclient import IMAPClient
+import re
+import pyperclip
 
 
 class MainPage(BasePage):
@@ -66,8 +69,8 @@ class MainPage(BasePage):
         self.d.send_keys(password)
 
     # def enter_invite_code(self, invite):
-        # self.device.xpath(Registration.INVITE_CODE).click()
-        # self.device.send_keys(invite)
+    # self.device.xpath(Registration.INVITE_CODE).click()
+    # self.device.send_keys(invite)
 
     @allure.step('Нажать свитч "Согласиться с правилами"')
     def click_terms_switch(self):
@@ -106,3 +109,46 @@ class MainPage(BasePage):
 
     def element_exists(self, locator):
         self.d.xpath(locator).exists(timeout=10)
+
+    # def get_verification_code(self):
+    #     '''Метод для ожидания прихода кода подтверждения на почту через протокол IMAP'''
+    #     imap_server = IMAPClient('imap.yandex.ru', ssl=True)
+    #     imap_server.login(valid_email_reg, app_key)
+    #     imap_server.select_folder('INBOX')
+    #     imap_server.idle()
+    #     while True:
+    #         responses = imap_server.idle_check(timeout=5)
+    #         if responses:
+    #             imap_server.idle_done()
+    #             break
+    #     messages = imap_server.search(['UNSEEN', 'FROM', 'support@yapmap.app'])
+    #     if messages:
+    #         latest_message_id = messages[-1]
+    #         message_data = imap_server.fetch([latest_message_id], ['BODY[]'])
+    #         for message in message_data.values():
+    #             body = message[b'BODY[]']
+    #             if body:
+    #                 decoded_body = body.decode('utf-8')
+    #                 pattern = r": \d{6}"
+    #                 match = re.search(pattern, decoded_body)
+    #                 if match:
+    #                     verification_code = match.group(0)[2:]
+    #                     code = str(verification_code)
+    #                     print(code)
+    #                     return code
+    #     imap_server.logout()
+
+    # def input_code(self):
+    #     code = self.get_verification_code()
+    #     print(code)
+    #     self.d.xpath(Validation.CODE_1).click()
+    #     self.d.send_keys(code)
+    def input_code(self):
+        self.d.xpath(Validation.CODE_1).click()
+        self.d.send_keys('1')
+        self.d.xpath(Validation.CODE_2).click()
+        self.d.send_keys('2')
+        self.d.xpath(Validation.CODE_3).click()
+        self.d.send_keys('3')
+        self.d.xpath(Validation.CODE_4).click()
+        self.d.send_keys('4')
