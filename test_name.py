@@ -145,60 +145,39 @@ class TestMobile:
         time.sleep(2)
         assert d.xpath(Validation.DESCRIPTION).get_text() == 'Invalid validation code'
         page.click_resend()
+        time.sleep(30)
+        assert d.xpath(Registration.CURRENT_STEP).get_text() == '2'
+        assert d.xpath(Registration.ALL_STEP).get_text() == '/4'
+        assert d.xpath(Registration.STEPS_TEXT).get_text() == 'STEPS'
+        assert d.xpath(Registration.UPLOAD_PICTURE_TEXT) == 'Upload a profile picture'
+        page.upload_profile_picture()
+        page.choose_dob_under_16()
 
-        # d.app_clear('com.android.chrome')
-        # time.sleep(5)
-        # d.app_clear('com.android.chrome')
-        # d.open_url("https://www.mail.yandex.ru")
-        # d.xpath('//*[@resource-id="com.android.chrome:id/fre_bottom_group"]').click()
-        # d.xpath('//*[@resource-id="com.android.chrome:id/negative_button"]').click()
-        # d.xpath('//*[@resource-id="com.android.chrome:id/search_box_text"]').set_text('https://mail.yandex.ru')
-        # d.
-        # b = webdriver.Chrome()
-        # b.find_element(By.CSS_SELECTOR, "#header-login-button")
-
-        # header-login-button
-        # time.sleep(2)
-        # d.click(0.504, 0.932)
-        # time.sleep(2)
-        # d.click(0.299, 0.372)
-        # time.sleep(2)
-        # d.click(0.866, 0.12)
-        # time.sleep(2)
-        # d.click(0.487, 0.926)
-        # time.sleep(2)
-        # d.click(0.468, 0.378)
-        # d.send_keys(test_email)
-        # time.sleep(2)
-        # d.click(0.49, 0.462)
-        # time.sleep(2)
-        # d.click(0.485, 0.4)
-        # d.send_keys(password_test_email)
-        # d.click(0.485, 0.518)
-
-        # d.app_start('com.android.chrome', stop=True)
-
-
-
-
-        # assert d.xpath(Registration.CURRENT_STEP).get_text() == '2'
-        # assert d.xpath(Registration.ALL_STEP).get_text() == '/4'
-        # assert d.xpath(Registration.STEPS_TEXT).get_text() == 'STEPS'
-        # assert d.xpath(Registration.UPLOAD_PICTURE_TEXT) == 'Upload a profile picture'
-        # page.upload_profile_picture()
-        # page.choose_dob()
-
+        page.click_continue()
+        assert d.xpath(Registration.FIRST_NAME_ERROR) == 'First Name is required'
+        page.enter_first_name('Se')
+        page.click_continue()
+        assert d.xpath(Registration.FIRST_NAME_ERROR) == 'First Name must be more than 3 characters'
+        page.clear_first_name()
+        assert d.xpath(Registration.FIRST_NAME) != 'Se'
+        page.enter_first_name('Sergey')
+        assert d.xpath(Registration.FIRST_NAME) == 'Sergey'
+        page.click_continue()
+        assert d.xpath(Registration.LAST_NAME_ERROR) == 'Last Name is required'
+        page.enter_last_name('Vy')
+        assert d.xpath(Registration.LAST_NAME) == 'Vy'
+        page.click_continue()
+        assert d.xpath(Registration.LAST_NAME_ERROR) == 'Last Name must be more than 3 characters'
+        page.clear_last_name()
+        assert d.xpath(Registration.LAST_NAME) != 'Vy'
+        page.enter_last_name('Vysotskiy')
+        assert d.xpath(Registration.LAST_NAME) == 'Vysotskiy'
+        page.click_continue()
+        assert d.xpath(Registration.DOB_TEXT) == 'Year - Month - Day'
+        page.choose_dob_under_16()
+        BasePage.get_screen(self)
+        assert d.xpath(Registration.DOB_TEXT) != 'Year - Month - Day'
         # page.click_continue()
-        # assert d.xpath(Registration.FIRST_NAME_ERROR) == 'First Name is required'
-        # page.enter_first_name('SV')
-        # page.click_continue()
-        # assert d.xpath(Registration.FIRST_NAME_ERROR) == 'First Name must be more than 3 characters'
-        # page.enter_first_name('Sergey')
-        # page.click_continue()
-        # assert d.xpath(Registration.LAST_NAME_ERROR) == 'Last Name is required'
-        # page.enter_last_name('SV')
-        # page.click_continue()
-        # assert d.xpath(Registration.LAST_NAME_ERROR) == 'Last Name must be more than 3 characters'
         # page.choose_gender('male')
 
     @pytest.mark.smoke

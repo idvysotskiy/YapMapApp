@@ -164,10 +164,15 @@ class MainPage(BasePage):
         self.d.xpath(Registration.PHOTO).click()
         self.d.xpath(Registration.ACCEPT_PHOTO).click()
 
-    @allure.step('Выбрать дату рождения')
-    def choose_dob(self):
+    @allure.step('Выбрать дату рождения 2002/02')
+    def choose_dob_over_16(self):
         self.d.xpath(Registration.YEAR).click()
         self.d.xpath(Registration.PICK_YEAR).click()
+        self.d.xpath(Registration.PICK_DAY).click()
+        self.d.xpath(Registration.CALENDAR_OK).click()
+
+    @allure.step('Выбрать дату рождения 2008/02')
+    def choose_dob_under_16(self):
         self.d.xpath(Registration.PICK_DAY).click()
         self.d.xpath(Registration.CALENDAR_OK).click()
 
@@ -192,8 +197,15 @@ class MainPage(BasePage):
         self.d.xpath(Registration.LAST_NAME).click()
         self.d.send_keys(last_name)
 
+    @allure.step('Удалить текст из поля [First Name]')
+    def clear_first_name(self):
+        self.d.xpath(Registration.FIRST_NAME).click()
+        self.d.clear_text()
 
-
+    @allure.step('Удалить текст из поля [Last Name]')
+    def clear_last_name(self):
+        self.d.xpath(Registration.LAST_NAME).click()
+        self.d.clear_text()
 
 
 
