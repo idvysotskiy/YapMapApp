@@ -2,13 +2,11 @@
 import time
 import pytest
 from selenium.webdriver.common.by import By
-
 from main_page import MainPage
 from config import *
 from base_page import *
 import allure
 from selenium import webdriver
-
 
 
 @allure.title("Чистим кеш приложения после теста")
@@ -42,6 +40,7 @@ class TestMobile:
         assert d.xpath(
             Tutorial.TEXT_5).get_text() == 'And besides, your application will help you find clients in case you are running a business.'
         assert d.xpath(Tutorial.SKIP).get_text() == 'DONE'
+        BasePage.get_screen(d)
         page.skip()
         # BasePage.get_screen(d)
         # element = d.xpath(Main.SIGNUP)
@@ -50,8 +49,6 @@ class TestMobile:
         # assert d.exists(Main.SIGNIN)
         # BasePage.is_element_present(d, MainPage.signup)
 
-        # BasePage.get_screen(d)
-
     @pytest.mark.smoke
     @allure.title("Регистрация в приложении [Sign UP]")
     @allure.testcase("Проверка регистрации в приложении (1/3 steps) - 6-8")
@@ -59,6 +56,7 @@ class TestMobile:
     def test_signup_back(self, d):
         page = MainPage(d)
         page.skip()
+        time.sleep(2)
         assert d.xpath(Main.SIGNUP).get_text() == 'SIGN UP'
         assert d.xpath(Main.SIGNIN).get_text() == 'SIGN IN'
         page.signup()
@@ -175,7 +173,7 @@ class TestMobile:
         page.click_continue()
         assert d.xpath(Registration.DOB_TEXT) == 'Year - Month - Day'
         page.choose_dob_under_16()
-        BasePage.get_screen(self)
+        BasePage.get_screen(d)
         assert d.xpath(Registration.DOB_TEXT) != 'Year - Month - Day'
         # page.click_continue()
         # page.choose_gender('male')
