@@ -96,8 +96,6 @@ class Registration:
     WEIGHT_TEXT = '//*[@text="Weight"]'
     WEIGHT_ENTER = '//*[@resource-id="com.yapmap.yapmap:id/weight_field"]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]'
     WEIGHT_SELECT = '//*[@resource-id="com.yapmap.yapmap:id/weight_field"]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]'
-    C
-    # STATUS
 
 
 class Status:

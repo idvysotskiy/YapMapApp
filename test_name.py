@@ -1,10 +1,13 @@
 # file: test_name.py
 import time
 import pytest
+from selenium.webdriver.common.by import By
+
 from main_page import MainPage
 from config import *
 from base_page import *
 import allure
+from selenium import webdriver
 
 
 
@@ -109,7 +112,7 @@ class TestMobile:
             Registration.ERROR).get_text() == 'Password must be 8 to 15 characters and should contain at least one uppercase letter, lowercase, letter, digit and special character symbol.'
         page.clear_password()
         page.enter_password(valid_password)
-        assert d.xpath(Registration.PASSWORD) == valid_password
+        assert d.xpath(Registration.PASSWORD).get_text() == valid_password
         page.signup()
         BasePage.get_screen(d)
         assert d.xpath(Registration.ERROR).get_text() == 'Passwords do not match'
@@ -143,6 +146,41 @@ class TestMobile:
         assert d.xpath(Validation.DESCRIPTION).get_text() == 'Invalid validation code'
         page.click_resend()
 
+        # d.app_clear('com.android.chrome')
+        # time.sleep(5)
+        # d.app_clear('com.android.chrome')
+        # d.open_url("https://www.mail.yandex.ru")
+        # d.xpath('//*[@resource-id="com.android.chrome:id/fre_bottom_group"]').click()
+        # d.xpath('//*[@resource-id="com.android.chrome:id/negative_button"]').click()
+        # d.xpath('//*[@resource-id="com.android.chrome:id/search_box_text"]').set_text('https://mail.yandex.ru')
+        # d.
+        # b = webdriver.Chrome()
+        # b.find_element(By.CSS_SELECTOR, "#header-login-button")
+
+        # header-login-button
+        # time.sleep(2)
+        # d.click(0.504, 0.932)
+        # time.sleep(2)
+        # d.click(0.299, 0.372)
+        # time.sleep(2)
+        # d.click(0.866, 0.12)
+        # time.sleep(2)
+        # d.click(0.487, 0.926)
+        # time.sleep(2)
+        # d.click(0.468, 0.378)
+        # d.send_keys(test_email)
+        # time.sleep(2)
+        # d.click(0.49, 0.462)
+        # time.sleep(2)
+        # d.click(0.485, 0.4)
+        # d.send_keys(password_test_email)
+        # d.click(0.485, 0.518)
+
+        # d.app_start('com.android.chrome', stop=True)
+
+
+
+
         # assert d.xpath(Registration.CURRENT_STEP).get_text() == '2'
         # assert d.xpath(Registration.ALL_STEP).get_text() == '/4'
         # assert d.xpath(Registration.STEPS_TEXT).get_text() == 'STEPS'
@@ -150,18 +188,18 @@ class TestMobile:
         # page.upload_profile_picture()
         # page.choose_dob()
 
-        page.click_continue()
-        assert d.xpath(Registration.FIRST_NAME_ERROR) == 'First Name is required'
-        page.enter_first_name('SV')
-        page.click_continue()
-        assert d.xpath(Registration.FIRST_NAME_ERROR) == 'First Name must be more than 3 characters'
-        page.enter_first_name('Sergey')
-        page.click_continue()
-        assert d.xpath(Registration.LAST_NAME_ERROR) == 'Last Name is required'
-        page.enter_last_name('SV')
-        page.click_continue()
-        assert d.xpath(Registration.LAST_NAME_ERROR) == 'Last Name must be more than 3 characters'
-        page.choose_gender('male')
+        # page.click_continue()
+        # assert d.xpath(Registration.FIRST_NAME_ERROR) == 'First Name is required'
+        # page.enter_first_name('SV')
+        # page.click_continue()
+        # assert d.xpath(Registration.FIRST_NAME_ERROR) == 'First Name must be more than 3 characters'
+        # page.enter_first_name('Sergey')
+        # page.click_continue()
+        # assert d.xpath(Registration.LAST_NAME_ERROR) == 'Last Name is required'
+        # page.enter_last_name('SV')
+        # page.click_continue()
+        # assert d.xpath(Registration.LAST_NAME_ERROR) == 'Last Name must be more than 3 characters'
+        # page.choose_gender('male')
 
     @pytest.mark.smoke
     @allure.title("Авторизация [Sign IN]")

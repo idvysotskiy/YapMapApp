@@ -17,6 +17,9 @@ invalid_password = '12345678'
 valid_email_reg = 'vysockij.s@i20.team'
 app_key = 'icuixuhbuucirovz'
 
+password_test_email = 'Qazwsx24!'
+test_email = 'yapmap.tester@yandex.ru'
+
 
 
 
