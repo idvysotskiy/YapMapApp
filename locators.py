@@ -51,8 +51,6 @@ class Registration:
     UPLOAD_PICTURE = '//*[@resource-id="com.yapmap.yapmap:id/profile_photo_layout"]/android.widget.FrameLayout[1]'
     FIRST_NAME = '//*[@resource-id="com.yapmap.yapmap:id/first_name_edit_text"]'
     LAST_NAME = '//*[@resource-id="com.yapmap.yapmap:id/last_name_edit_text"]'
-    FIRST_NAME_ERROR = '//*[@resource-id="com.yapmap.yapmap:id/textinput_error"]'
-    LAST_NAME_ERROR = '//*[@resource-id="com.yapmap.yapmap:id/textinput_error"]'
     DOB_TITLE = '//*[@resource-id="com.yapmap.yapmap:id/dob_title"]'
     DOB_TEXT = '//*[@resource-id="com.yapmap.yapmap:id/dob_text_view"]'
     DOB_SELECT = '//*[@resource-id="com.yapmap.yapmap:id/dob_layout"]'

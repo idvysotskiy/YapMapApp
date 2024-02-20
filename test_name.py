@@ -152,20 +152,20 @@ class TestMobile:
         page.choose_dob_under_16()
 
         page.click_continue()
-        assert d.xpath(Registration.FIRST_NAME_ERROR) == 'First Name is required'
+        assert d.xpath(Registration.ERROR) == 'First Name is required'
         page.enter_first_name('Se')
         page.click_continue()
-        assert d.xpath(Registration.FIRST_NAME_ERROR) == 'First Name must be more than 3 characters'
+        assert d.xpath(Registration.ERROR) == 'First Name must be more than 3 characters'
         page.clear_first_name()
         assert d.xpath(Registration.FIRST_NAME) != 'Se'
         page.enter_first_name('Sergey')
         assert d.xpath(Registration.FIRST_NAME) == 'Sergey'
         page.click_continue()
-        assert d.xpath(Registration.LAST_NAME_ERROR) == 'Last Name is required'
+        assert d.xpath(Registration.ERROR) == 'Last Name is required'
         page.enter_last_name('Vy')
         assert d.xpath(Registration.LAST_NAME) == 'Vy'
         page.click_continue()
-        assert d.xpath(Registration.LAST_NAME_ERROR) == 'Last Name must be more than 3 characters'
+        assert d.xpath(Registration.ERROR) == 'Last Name must be more than 3 characters'
         page.clear_last_name()
         assert d.xpath(Registration.LAST_NAME) != 'Vy'
         page.enter_last_name('Vysotskiy')
