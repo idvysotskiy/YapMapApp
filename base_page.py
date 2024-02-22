@@ -5,6 +5,7 @@ from config import *
 import random
 import string
 from datetime import date
+import time
 
 
 class BasePage:
@@ -23,7 +24,8 @@ class BasePage:
         return username + rnd_name + domain
 
     def is_element_present(self, locator):
-        assert self.d.xpath(locator).exists, 'Element not found!'
+        print(self.d.xpath(locator).exists)
+        assert self.d.xpath(locator).exists == True, 'Element not found!'
 
     def get_screen(self):
         print('screen')
@@ -31,4 +33,42 @@ class BasePage:
         # self.d.screenshot(screen)
         # allure.attach.file(f'./{screen}', attachment_type=allure.attachment_type.PNG)
 
+    def click(self, locator, element_name=None):
+        if element_name is not None:
+            with allure.step("Клик по элементу '{element_name}'"):
+                self.get_element(locator).click()
+        else:
+            self.get_element(locator).click()
 
+    def set_text(self, locator, text, element_name=None):
+        if element_name is not None:
+            with allure.step("Заполнение поля '{element_name}' текстом '{text}'"):
+                self.get_element(locator).set_text(text)
+        else:
+            self.get_element(locator).set_text(text)
+
+    def get_element(self, locator):
+        if locator[0] == '/' and locator[1] == '/':
+            return self.d.xpath(locator)
+        else:
+            return self.d(resourceId=locator)
+
+    def get_text(self, locator):
+        return self.get_element(locator).get_text()
+
+    def wait_a_moment(self):
+        time.sleep(0.5)
+
+    def wait_a_second(self):
+        time.sleep(1)
+
+    def swipe_down(self):
+        self.d.swipe(400, self.d.window_size()[1] / 2, 400, self.d.window_size()[1] / 4)
+
+    @allure.step('Сделать свайп влево')
+    def swipe(self, swipe_ext):
+        self.d.swipe_ext(swipe_ext, scale=0.8)
+
+    @allure.step('Сделать свайп вверх')
+    def swipe_page(self):
+        self.d.swipe_ext(Direction.HORIZ_FORWARD)

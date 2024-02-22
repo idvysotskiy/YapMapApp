@@ -1,12 +1,10 @@
 # file: test_name.py
 import time
 import pytest
-from selenium.webdriver.common.by import By
 from main_page import MainPage
 from config import *
 from base_page import *
 import allure
-from selenium import webdriver
 
 
 @allure.title("Чистим кеш приложения после теста")
@@ -40,14 +38,9 @@ class TestMobile:
         assert d.xpath(
             Tutorial.TEXT_5).get_text() == 'And besides, your application will help you find clients in case you are running a business.'
         assert d.xpath(Tutorial.SKIP).get_text() == 'DONE'
-        BasePage.get_screen(d)
+        BasePage(d).get_screen()
         page.skip()
-        # BasePage.get_screen(d)
-        # element = d.xpath(Main.SIGNUP)
-        # assert d.exists(element)
-        # element = d.xpath(Main.SIGNIN)
-        # assert d.exists(Main.SIGNIN)
-        # BasePage.is_element_present(d, MainPage.signup)
+
 
     @pytest.mark.smoke
     @allure.title("Регистрация в приложении [Sign UP]")
@@ -63,7 +56,7 @@ class TestMobile:
         assert d.xpath(Registration.CURRENT_STEP).get_text() == '1'
         assert d.xpath(Registration.ALL_STEP).get_text() == '/4'
         assert d.xpath(Registration.STEPS_TEXT).get_text() == 'STEPS'
-        BasePage.get_screen(d)
+        BasePage(d).get_screen()
         page.back()
         assert d.xpath(Main.TITLE).get_text() == 'YapMapApp'
         assert d.xpath(Main.DESCRIPTION).get_text() == 'New generation social ecosystem'
@@ -81,12 +74,12 @@ class TestMobile:
         assert d.xpath(Registration.TITLE).get_text() == 'New Account'
         page.enter_email('R2D2')
         page.signup()
-        BasePage.get_screen(d)
+        BasePage(d).get_screen()
         assert d.xpath(Registration.ERROR).get_text() == 'Email is not valid'
         page.clear_email()
         assert d.xpath(Registration.ERROR).get_text() != 'R2D2'
         page.signup()
-        BasePage.get_screen(d)
+        BasePage(d).get_screen()
         assert d.xpath(Registration.ERROR).get_text() == 'Email must be more than 3 characters'
 
     @pytest.mark.smoke
@@ -102,17 +95,17 @@ class TestMobile:
         assert d.xpath(Registration.ERROR).get_text() == 'Password must be more than 8 characters'
         page.enter_password(invalid_password)
         page.click_show_pass()
-        BasePage.get_screen(d)
+        BasePage(d).get_screen()
         assert d.xpath(Registration.PASSWORD).get_text() == invalid_password
         page.signup()
-        BasePage.get_screen(d)
+        BasePage(d).get_screen()
         assert d.xpath(
             Registration.ERROR).get_text() == 'Password must be 8 to 15 characters and should contain at least one uppercase letter, lowercase, letter, digit and special character symbol.'
         page.clear_password()
         page.enter_password(valid_password)
         assert d.xpath(Registration.PASSWORD).get_text() == valid_password
         page.signup()
-        BasePage.get_screen(d)
+        BasePage(d).get_screen()
         assert d.xpath(Registration.ERROR).get_text() == 'Passwords do not match'
 
     @pytest.mark.smoke
@@ -128,7 +121,7 @@ class TestMobile:
         page.click_show_pass()
         page.confirm_password(valid_password)
         page.click_show_confirm_pass()
-        BasePage.get_screen(d)
+        BasePage(d).get_screen()
         assert d.xpath(Registration.PASSWORD).get_text() == valid_password
         assert d.xpath(Registration.CONFIRM_PASSWORD).get_text() == valid_password
         page.signup()
@@ -136,7 +129,7 @@ class TestMobile:
         page.click_terms_switch()
         page.signup()
         time.sleep(2)
-        BasePage.get_screen(d)
+        BasePage(d).get_screen()
         assert d.xpath(Validation.TITLE).get_text() == 'Enter Validation Code'
         assert d.xpath(Validation.DESCRIPTION).get_text() == 'You should be a receiving an email with a validation code'
         page.input_code()
@@ -173,7 +166,7 @@ class TestMobile:
         page.click_continue()
         assert d.xpath(Registration.DOB_TEXT) == 'Year - Month - Day'
         page.choose_dob_under_16()
-        BasePage.get_screen(d)
+        BasePage(d).get_screen()
         assert d.xpath(Registration.DOB_TEXT) != 'Year - Month - Day'
         # page.click_continue()
         # page.choose_gender('male')
@@ -183,5 +176,6 @@ class TestMobile:
     @allure.testcase("Проверка авторизации в приложении")
     def test_login(self, d):
         page = MainPage(d)
+        BasePage(d).is_element_present(Main.BACK_BUTTON)
         page.skip()
         page.login(valid_email, valid_password)
