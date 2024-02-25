@@ -69,6 +69,14 @@ class BasePage:
     def swipe(self, swipe_ext):
         self.d.swipe_ext(swipe_ext, scale=0.8)
 
-    @allure.step('Сделать свайп вверх')
-    def swipe_page(self):
-        self.d.swipe_ext(Direction.HORIZ_FORWARD)
+    # @allure.step('Сделать свайп вверх')
+    # def swipe_page(self):
+    #     self.d.swipe_ext(Direction.HORIZ_FORWARD)
+
+    def clear_text(self, locator, element_name=None):
+        if element_name is not None:
+            with allure.step("Удалить текст из поля '{element_name}'"):
+                self.get_element(locator).click()
+        else:
+            self.d.clear_text()
+

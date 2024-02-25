@@ -72,7 +72,7 @@ class MainPage(BasePage):
 
     @allure.step('Удалить текст из поля [password]')
     def clear_password(self):
-        self.d.xpath(Registration.PASSWORD).click()
+        self.click(Registration.PASSWORD)
         self.d.clear_text()
 
     def test_text(self, text):
