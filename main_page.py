@@ -130,6 +130,7 @@ class MainPage(BasePage):
     @allure.step('Заполнить поле First Name')
     def enter_first_name(self, first_name):
         self.set_text(Registration.FIRST_NAME, first_name)
+        assert self.get_text(Registration.FIRST_NAME) == first_name
 
     @allure.step('Заполнить поле Last Name')
     def enter_last_name(self, last_name):
@@ -144,3 +145,40 @@ class MainPage(BasePage):
     def clear_last_name(self):
         self.d.xpath(Registration.LAST_NAME).click()
         self.d.clear_text()
+
+    def elements_welcome_page_1(self):
+        assert self.get_text(Tutorial.SKIP) == 'SKIP'
+        # assert d.xpath(Tutorial.TEXT_1).get_text() == 'Are you lonely? ENTER?????'
+
+    def elements_welcome_page_2(self):
+        assert self.get_text(Tutorial.SKIP) == 'SKIP'
+        assert self.get_text(Tutorial.TEXT_2) == 'You can create a group of interest. Invite friends. And to be always in the stream of life.'
+
+    def elements_welcome_page_3(self):
+        assert self.get_text(Tutorial.SKIP) == 'SKIP'
+        assert self.get_text(Tutorial.TEXT_3) == 'Create an event and invite people to spend time together.'
+
+    def elements_welcome_page_4(self):
+        assert self.get_text(Tutorial.SKIP) == 'SKIP'
+        assert self.get_text(Tutorial.TEXT_4) == 'Communicate. Enjoy life. Share your impressions.'
+
+    def elements_welcome_page_5(self):
+        assert self.get_text(Tutorial.TEXT_5) == 'And besides, your application will help you find clients in case you are running a business.'
+        assert self.get_text(Tutorial.SKIP) == 'DONE'
+
+    def elements_main_page(self):
+        assert self.get_text(Main.TITLE) == 'YapMapApp'
+        assert self.get_text(Main.DESCRIPTION) == 'New generation social ecosystem'
+        assert self.get_text(Main.SIGNUP) == 'SIGN UP'
+        assert self.get_text(Main.SIGNIN) == 'SIGN IN'
+
+    def elements_registration_step_1(self):
+        assert self.get_text(Registration.CURRENT_STEP) == '1'
+        assert self.get_text(Registration.ALL_STEP) == '/4'
+        assert self.get_text(Registration.STEPS_TEXT) == 'STEPS'
+
+    def elements_registration_step_2(self):
+        assert self.get_text(Registration.CURRENT_STEP) == '2'
+        assert self.get_text(Registration.ALL_STEP) == '/4'
+        assert self.get_text(Registration.STEPS_TEXT) == 'STEPS'
+        assert self.get_text(Registration.UPLOAD_PICTURE_TEXT) == 'Upload a profile picture'
